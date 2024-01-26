@@ -9,7 +9,8 @@ function show (data) {
             <div>
                 <h2>Description</h2>
                 {data.place.city}, {data.place.state}
-                {data.place.cuisine}
+                <br />
+                {data.place.cuisines}
             </div>
             <div>
             <h2>Rating</h2>
@@ -18,6 +19,7 @@ function show (data) {
                 <a href={`/places/${data.id}/edit`} className="btn btn-warning">
                     Edit
                 </a>
+                <br />
                 <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
                     <button type="submit" className="btn btn-danger">
                         Delete
