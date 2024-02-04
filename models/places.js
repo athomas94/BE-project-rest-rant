@@ -1,11 +1,15 @@
 const mongoose = require('mongoose')
 const placeSchema = new mongoose.Schema({
     name: { type: String, required: true},
-    pic: String,
+    pic: { type: String, default: 'http://placekitten.com/350/350' },
     cuisines: { type: String, required: true},
     city: { type: String, default: 'Anytown'},
     state: { type: String, default: 'USA'},
-    founded: Number
+    founded: {
+        type: Number,
+        min: [1673, 'Surely not that old!?'],
+        max: [new Date().getFullYear(), 'Hey, this year is in the future!']
+    }
 })
 
 placeSchema.methods.showEstablished = function() {
@@ -13,19 +17,3 @@ placeSchema.methods.showEstablished = function() {
   }
   
 module.exports = mongoose.model('Place', placeSchema)
-
-
-
-// module.exports = [{
-//     name: 'H-Thai-ML',
-//     city: 'Seattle',
-//     state: 'WA',
-//     cuisines: 'Thai, Pan-Asian',
-//     pic: '/images/lily-banse--YHSwy6uqvk-unsplash.jpg'
-// }, {
-//     name: 'Coding Cat Cafe',
-//     city: 'Pheonix',
-//     state: 'AZ',
-//     cuisines: 'Coffee, Bakery',
-//     pic: '/images/victoria-shes-UC0HZdUitWY-unsplash.jpg'
-// }]
