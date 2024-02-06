@@ -62,7 +62,9 @@ function show (data) {
                 {comments}
             </div>
             </div>
-            <form method="POST" action={`/places/${data.id}/comment`}>
+            <hr />
+            <h2>Want to add your own comment?</h2>
+            <form method="POST" action={`/places/${data.place.id}/comment`}>
                 <div className="row"> 
                     <div className="form-group col-sm-6">
                         <div className="form-group">
@@ -73,15 +75,15 @@ function show (data) {
                     <div className="form-group col-sm-6">
                         <div className="form-group">
                             <label htmlFor="content">Comments</label>
-                            <input type="textArea" className="form-control" name="content"/>
+                            <textarea className="form-control" id="content" name="content"/>
                         </div>
                     </div>
                 </div>
                 <div className="row"> 
                     <div className="form-group col-sm-6">
                         <div className="form-group">
-                            <label for="rating">Rating</label>
-                            <input type="number" step="0.5" className="form-control" id="rating" name="rating" />
+                            <label for="stars">Rating</label>
+                            <input type="number" step="0.5" min="1" max="5" className="form-control" id="stars" name="stars" />
                         </div>
                     </div>
                     <div className="form-group col-sm-6">
