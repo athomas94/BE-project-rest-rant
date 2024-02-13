@@ -11,6 +11,9 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
+//Mongo connection
+mongoose.connect(process.env.MONGO_URI).then(() => console.log('connected to mongo: ', process.env.MONGO_URI))
+
 app.get('/', function (req, res) {
     res.render('home')
 })
